@@ -60,10 +60,11 @@ class SignUpForm extends Model
             $user->lastName = $this->lastName;
             $user->surname = $this->surname;
             $user->email = $this->email;
-            $user->status = User::ROLE_CLIENT;
+            $user->status = User::STATUS_VISIBLE;
             $user->passwordHash = Yii::$app->security->generatePasswordHash($this->password);
             $user->authKey = Yii::$app->security->generateRandomString(10);
             $user->time_create = time();
+            $user->user_type = User::ROLE_CLIENT;
 
             if ($user->save()) {
                 return Yii::$app->db->getLastInsertID();

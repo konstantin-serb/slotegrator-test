@@ -44,12 +44,10 @@ AppAsset::register($this);
 
             ],
             [
-                'label' => 'Сущности',
+                'label' => 'Призы',
                 'items' => [
-                    ['label' => 'Статьи', 'url' => ['/admin/user']],
-                    ['label' => 'Категории', 'url' => ['/']],
-                    ['label' => 'Теги', 'url' => ['/']],
-                    ['label' => 'Картинки', 'url' => ['/']],
+                    ['label' => 'Денежные и баллы', 'url' => ['/admin/money-and-points']],
+                    ['label' => 'Вещественные призы', 'url' => ['/admin/things']],
                 ],
             ],
 

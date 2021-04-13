@@ -91,6 +91,7 @@ class SiteController extends Controller
 
     public function actionSignup()
     {
+        if(!Yii::$app->user->isGuest){return $this->redirect(['/']);}
         $model = new SignUpForm();
         if($model->load(Yii::$app->request->post())){
             if($userId = $model->save()) {
