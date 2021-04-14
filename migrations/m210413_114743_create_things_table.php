@@ -17,6 +17,7 @@ class m210413_114743_create_things_table extends Migration
             'title' => $this->string()->notNull(),
             'price' => $this->integer()->notNull(),
             'available' => $this->integer(),
+            'count' => $this->integer(),
         ]);
     }
 

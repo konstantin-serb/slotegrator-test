@@ -65,6 +65,7 @@ class SignUpForm extends Model
             $user->authKey = Yii::$app->security->generateRandomString(10);
             $user->time_create = time();
             $user->user_type = User::ROLE_CLIENT;
+            $user->count_chance = 1;
 
             if ($user->save()) {
                 return Yii::$app->db->getLastInsertID();

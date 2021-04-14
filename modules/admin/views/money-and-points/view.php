@@ -29,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'type',
             'coeff',
             'status',
+            'limit',
         ],
     ]) ?>
 

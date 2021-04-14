@@ -21,6 +21,7 @@ use yii\web\IdentityInterface;
  * @property int $time_create
  * @property int $time_update
  * @property int $status
+ * @property int $count_chance
  */
 
 class User extends \yii\db\ActiveRecord implements IdentityInterface

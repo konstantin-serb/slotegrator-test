@@ -26,6 +26,7 @@ class m210211_182735_create_user_table extends Migration
             'time_create' => $this->integer()->notNull(),
             'time_update' => $this->integer(),
             'user_type' => $this->integer(),
+            'count_chance' => $this->integer(),
         ]);
     }
 

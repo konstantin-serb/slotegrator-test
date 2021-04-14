@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Account;
 use app\models\SignUpForm;
 use app\models\User;
 use Yii;
@@ -63,7 +64,21 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        if(Yii::$app->user->isGuest) {return $this->redirect(['/site/login']);}
+        $currentUser = Yii::$app->user->identity->getId();
+        if($currentUser) {
+            $userInfo = Account::find()->where(['user_id' => $currentUser])->one();
+
+            if(!$userInfo) {
+                $userInfo = new Account();
+                $userInfo->user_id = $currentUser;
+                $userInfo->save();
+            }
+        }
+
+        return $this->render('index', [
+            'userInfo' => $userInfo,
+        ]);
     }
 
     /**
@@ -118,31 +133,4 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
 }

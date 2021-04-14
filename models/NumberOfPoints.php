@@ -13,6 +13,7 @@ use Yii;
  * @property string $type
  * @property float|null $coeff
  * @property int|null $status
+ * @property int|null $limit
  */
 class NumberOfPoints extends \yii\db\ActiveRecord
 {
@@ -31,7 +32,7 @@ class NumberOfPoints extends \yii\db\ActiveRecord
     {
         return [
             [['min', 'max', 'type'], 'required'],
-            [['min', 'max', 'status'], 'integer'],
+            [['min', 'max', 'status', 'limit'], 'integer'],
             [['coeff'], 'number'],
             [['type'], 'string', 'max' => 255],
         ];

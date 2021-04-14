@@ -1,26 +1,27 @@
 <?php
 
-/* @var $this yii\web\View */
+/** @var $this yii\web\View
+ * @var $userInfo app\models\Account
+ */
 
 use yii\helpers\Url;
 
-$this->title = 'My Yii Application';
+$this->title = 'Главная';
 ?>
 <div class="site-index">
+<?php Yii::$app->session->getFlash('success')?>
+    <div class="">
+        <h1>Здравствуйте <?php echo Yii::$app->user->identity->username ?>!</h1>
+        <?php if(!Yii::$app->user->identity->is_admin == 1):?>
+        <h3>На вашем счету:</h3>
+        <p><b>Денежных средств: </b>$<?=$userInfo->getMoney()?></p>
+        <p><b>Бонусных баллов: </b><?=$userInfo->getPoints()?></p>
+        <?php if (Yii::$app->user->identity->count_chance > 0): ?>
+            <p><a class="btn btn-lg btn-success" href="<?= Url::to(['/prize']) ?>">Получить подарок!</a></p>
+        <?php endif; ?>
+        <?php endif;?>
+    </div>
 
-    <?php if (!Yii::$app->user->isGuest): ?>
-        <div class="jumbotron">
-            <h1>Здравствуйте <?php echo Yii::$app->user->identity->username ?>!</h1>
-
-            <p><a class="btn btn-lg btn-success" href="">Получить подарок!</a></p>
-        </div>
-    <?php else: ?>
-        <div class="jumbotron">
-            <h1>Вам нужно авторизоваться</h1>
-            <br>
-            <p><a class="btn btn-lg btn-info" href="<?=Url::to(['/site/login'])?>">Войти</a></p>
-        </div>
-    <?php endif; ?>
 
     <div class="body-content">
 

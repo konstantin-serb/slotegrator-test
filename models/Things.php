@@ -11,6 +11,7 @@ use Yii;
  * @property string $title
  * @property int $price
  * @property int|null $available
+ * @property int|null $count
  */
 class Things extends \yii\db\ActiveRecord
 {
@@ -28,8 +29,8 @@ class Things extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'price'], 'required'],
-            [['price', 'available'], 'integer'],
+            [['title', 'price','count'], 'required'],
+            [['price', 'available','count'], 'integer'],
             [['title'], 'string', 'max' => 255],
         ];
     }

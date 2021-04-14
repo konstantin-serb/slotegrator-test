@@ -19,6 +19,7 @@ class m210413_113323_create_number_of_points_table extends Migration
             'type' => $this->string()->notNull(),
             'coeff' => $this->float(),
             'status' => $this->integer(),
+            'limit' => $this->integer(),
         ]);
     }
 

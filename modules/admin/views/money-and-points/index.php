@@ -28,6 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'max',
             'type',
             'coeff',
+            'limit',
             //'status',
 
             ['class' => 'yii\grid\ActionColumn'],
